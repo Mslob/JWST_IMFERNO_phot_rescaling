@@ -68,7 +68,7 @@ def define_phot_filters():
 ##################################################################
 # Crossmatch with the COSMOS2025 photometry and normalise the flux 
 ##################################################################
-with fits.open('COSMOSWeb_mastercatalog_v1.fits', mode = 'readonly') as f:
+with fits.open('COSMOSWeb_mastercatalog_v1.fits', mode = 'readonly') as f: # Master catalog with photometry from COSMOS2025, retrieved from https://cosmos2025.iap.fr/
     phot_cat = Table(f[1].data)
 filters_lambda_eff = define_phot_filters()
 
