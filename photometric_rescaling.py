@@ -6,7 +6,7 @@ from astropy.table import Table
 
 def get_flux_in_phot_filter(wavs_x1d, flux_1d, band):
     # Load in the filter curve
-    trans_curve = np.loadtxt(f'filter_curves/{band}.txt')
+    trans_curve = np.loadtxt(f'{band}.txt')
     wavs_curve = trans_curve[:, 0]  # Wavelengths 
     if wavs_curve[0] > 1e3: # Units are in Angstroms
         wavs_curve = wavs_curve / 1e4  # Convert to microns
@@ -68,7 +68,7 @@ def define_phot_filters():
 ##################################################################
 # Crossmatch with the COSMOS2025 photometry and normalise the flux 
 ##################################################################
-with fits.open('/data2/cosmos2025/COSMOSWeb_mastercatalog_v1.fits', mode = 'readonly') as f:
+with fits.open('COSMOSWeb_mastercatalog_v1.fits', mode = 'readonly') as f:
     phot_cat = Table(f[1].data)
 filters_lambda_eff = define_phot_filters()
 
